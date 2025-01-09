@@ -60,6 +60,7 @@ char	*ft_strdup(char *str)
 	char	*dest;
 	int		len;
 
+	len = 0;
 	while (str[len])
 		len ++;
 	dest = (char *) malloc(sizeof(char) * (len + 1));
