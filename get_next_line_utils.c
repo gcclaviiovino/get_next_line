@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: liovino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/09 18:09:41 by liovino           #+#    #+#             */
+/*   Updated: 2025/01/09 18:09:44 by liovino          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_strchr(char *str, char c)
@@ -12,6 +24,7 @@ char	*ft_strchr(char *str, char c)
 	}
 	return (NULL);
 }
+
 char	*ft_strchrcpy(char *dest, char *src, char c)
 {
 	if (!dest || !src)
@@ -30,6 +43,7 @@ char	*ft_strchrcpy(char *dest, char *src, char c)
 	*dest = '\0';
 	return (dest);
 }
+
 void	ft_bzero(void *mem, size_t n)
 {
 	size_t	i;
@@ -43,6 +57,7 @@ void	ft_bzero(void *mem, size_t n)
 		i ++;
 	}
 }
+
 void	*ft_calloc(size_t nelem, size_t elsize)
 {
 	void	*res;
@@ -55,6 +70,7 @@ void	*ft_calloc(size_t nelem, size_t elsize)
 	ft_bzero(res, (elsize * nelem));
 	return (res);
 }
+
 char	*ft_strdup(char *str)
 {
 	char	*dest;

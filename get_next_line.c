@@ -47,6 +47,7 @@ char	*join_line(char *buff, char *n_buff)
 	superstr[l_1 + i] = '\0';
 	return (superstr);
 }
+
 char	*next_line(char *buff)
 {
 	char	*temp;
@@ -70,6 +71,7 @@ char	*find_line(int fd, char *buff)
 		return (NULL);
 	return (buff);
 }
+
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
