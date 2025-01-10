@@ -6,7 +6,7 @@
 /*   By: liovino <liovino@student.42.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:12:55 by liovino           #+#    #+#             */
-/*   Updated: 2025/01/10 18:25:38 by liovino          ###   ########.fr       */
+/*   Updated: 2025/01/10 23:07:21 by liovino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,22 @@ char	*fill_line(char **buffer)
 	char	*temp;
 
 	new_start = ft_strchr(*buffer, '\n');
-	line = (char *) malloc((sizeof(char)) * ((new_start - *buffer) + 2));
-	if (!line)
-		return (NULL);
-	line = ft_strchrcpy(line, *buffer, '\n');
-	temp = next_line(*buffer);
-	free(*buffer);
-	*buffer = temp;
+	if (new_start != NULL)
+	{
+		line = (char *) malloc((sizeof(char)) * ((new_start - *buffer) + 2));
+		if (!line)
+			return (NULL);
+		line = ft_strchrcpy(line, *buffer, '\n');
+		temp = next_line(*buffer);
+		free(*buffer);
+		*buffer = temp;
+	}
+	else
+	{
+		line = ft_strdup(*buffer);
+		free(*buffer);
+		*buffer = NULL;
+	}
 	return (line);
 }
 
@@ -78,6 +87,11 @@ char	*get_next_line(int fd)
 			line = fill_line(&buffer);
 			return (line);
 		}
+	}
+	if (buffer && *buffer)
+	{
+		line = fill_line(&buffer);
+		return (line);
 	}
 	return (NULL);
 }
