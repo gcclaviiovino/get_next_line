@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liovino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: liovino <liovino@student.42.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:09:41 by liovino           #+#    #+#             */
-/*   Updated: 2025/01/09 18:09:44 by liovino          ###   ########.fr       */
+/*   Updated: 2025/01/10 18:25:11 by liovino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,51 +24,61 @@ char	*ft_strchr(char *str, char c)
 	}
 	return (NULL);
 }
-
 char	*ft_strchrcpy(char *dest, char *src, char c)
 {
+	size_t	i;
+
+	i = 0;
 	if (!dest || !src)
 		return (NULL);
-	while (*src != c)
+	while (src[i] != c)
 	{
-		*dest = *src;
-		dest ++;
-		src ++;
+		dest[i] = src[i];
+		i ++;
 	}
 	if (c != '\0')
 	{
-		*dest = c;
-		dest ++;
+		dest[i] = c;
+		i ++;
 	}
-	*dest = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
-void	ft_bzero(void *mem, size_t n)
+int	ft_strlen(const char *str)
 {
-	size_t	i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = mem;
-	while (i < n)
+	while (str[i] != '\0')
 	{
-		str[i] = 0;
 		i ++;
 	}
+	return (i);
 }
-
-void	*ft_calloc(size_t nelem, size_t elsize)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	void	*res;
+	int		i;
+	int		l_1;
+	int		l_2;
+	char	*superstr;
 
-	if (nelem != 0 && elsize > (SIZE_MAX / nelem))
+	i = -1;
+	if (!s1 || !s2)
 		return (NULL);
-	res = (void *) malloc(elsize * nelem);
-	if (!res)
+	l_1 = ft_strlen(s1);
+	l_2 = ft_strlen(s2);
+	superstr = (char *) malloc(sizeof(char) * ((l_1 + l_2) + 1));
+	if (!superstr)
 		return (NULL);
-	ft_bzero(res, (elsize * nelem));
-	return (res);
+	while (s1[++i] != '\0')
+		superstr[i] = s1[i];
+	i = -1;
+	while (s2[++i] != '\0')
+		superstr[l_1 + i] = s2[i];
+	superstr[l_1 + i] = '\0';
+	free(s1);
+	return (superstr);
 }
 
 char	*ft_strdup(char *str)

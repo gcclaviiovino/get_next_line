@@ -6,7 +6,7 @@
 /*   By: liovino <liovino@student.42.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:41:03 by liovino           #+#    #+#             */
-/*   Updated: 2025/01/09 17:57:01 by liovino          ###   ########.fr       */
+/*   Updated: 2025/01/10 18:27:49 by liovino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@
 
 char	*get_next_line(int fd);
 int		ft_strlen(const char *str);
-char	*join_line(char *buff, char *n_buff);
+char	*ft_strjoin(char *s1, char *s2);
 char	*next_line(char *buff);
-char	*find_line(int fd, char *buff);
+char	*find_line(int fd);
 char	*ft_strchr(char *str, char c);
 char	*ft_strchrcpy(char *dest, char *src, char c);
-void	ft_bzero(void *mem, size_t n);
 void	*ft_calloc(size_t nelem, size_t elsize);
 char	*ft_strdup(char *str);
 
