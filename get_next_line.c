@@ -41,6 +41,7 @@ char	*find_line(int fd)
 	temp_buff[check_read] = '\0';
 	return (temp_buff);
 }
+
 char	*fill_line(char **buffer)
 {
 	char	*new_start;
@@ -75,7 +76,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while ((new_buff = find_line(fd)) != NULL)
+	new_buff = find_line(fd);
+	while (new_buff)
 	{
 		if (!buffer)
 			buffer = ft_strdup(new_buff);
@@ -87,11 +89,9 @@ char	*get_next_line(int fd)
 			line = fill_line(&buffer);
 			return (line);
 		}
+		new_buff = find_line(fd);
 	}
 	if (buffer && *buffer)
-	{
-		line = fill_line(&buffer);
-		return (line);
-	}
+		return (fill_line(&buffer));
 	return (NULL);
 }

@@ -24,6 +24,7 @@ char	*ft_strchr(char *str, char c)
 	}
 	return (NULL);
 }
+
 char	*ft_strchrcpy(char *dest, char *src, char c)
 {
 	size_t	i;
@@ -56,6 +57,7 @@ int	ft_strlen(const char *str)
 	}
 	return (i);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
